@@ -1,10 +1,7 @@
-
 class Solution {
 public:
     int merge(vector<int>& nums, int left, int mid, int right) {
         int count = 0, j = mid + 1;
-
-        // Count reverse pairs
         for (int i = left; i <= mid; i++) {
             while (j <= right && (long long)nums[i] > 2LL * nums[j]) {
                 j++;
@@ -13,7 +10,6 @@ public:
         }
         vector<int> temp;
         int i = left, k = mid + 1;
-
         while (i <= mid && k <= right) {
             if (nums[i] <= nums[k]) {
                 temp.push_back(nums[i++]);
@@ -21,7 +17,6 @@ public:
                 temp.push_back(nums[k++]);
             }
         }
-
         while (i <= mid) temp.push_back(nums[i++]);
         while (k <= right) temp.push_back(nums[k++]);        
         for (int i = left; i <= right; i++) {
